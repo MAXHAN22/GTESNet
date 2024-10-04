@@ -7,11 +7,11 @@ from toolbox.paper2.paper2_7.myGCN import SpatialGCN1
 
 
 #使用 max+mean
-class prototype2(nn.Module):
+class GTE(nn.Module):
 
 
     def __init__(self, in_c, num_p):
-        super(prototype2, self).__init__()
+        super(GTE, self).__init__()
         self.num_cluster = num_p
         self.netup = torch.nn.Sequential(
                 torch.nn.Conv2d(in_c, num_p, 3, padding=1)
@@ -97,10 +97,3 @@ class prototype2(nn.Module):
 
 
 
-if __name__ == '__main__':
-    x = torch.randn(4, 64, 64, 64)
-    b= torch.randn(4, 3, 1, 1)
-    model = prototype(64, 25)
-    x = model(x)
-
-    print(x.shape)
