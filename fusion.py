@@ -1,13 +1,13 @@
 import torch
 import torch.nn as nn
-from toolbox.paper2.paper2_7.fusion_weight import weight
+from toolbox.paper2.paper2_7.MCA import MCA
 
 
-class CSIB2_2(nn.Module):
+class ECF(nn.Module):
     def __init__(self, in_channel):
-        super(CSIB2_2, self).__init__()
+        super(ECF, self).__init__()
 
-        self.weight = weight(in_channel, in_channel)
+        self.weight = MCA(in_channel, in_channel)
         self.conv_qr = nn.Conv2d(1, 1, kernel_size=1)
         self.conv_kr = nn.Conv2d(1, 1, kernel_size=1)
         self.conv_vr = nn.Conv2d(1, 1, kernel_size=1)
@@ -81,7 +81,7 @@ class CSIB2_2(nn.Module):
 if __name__ == '__main__':
     r = torch.randn(4, 16, 64, 64)
     d = torch.randn(4, 16, 64, 64)
-    model = CSIB(in_channel=16)
+    model = ECF(in_channel=16)
 
     x = model(r, d)
 
