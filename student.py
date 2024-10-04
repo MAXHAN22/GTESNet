@@ -7,7 +7,7 @@ from toolbox.backbone.mobilenet.MobileNetv2 import mobilenet_v2
 
 from toolbox.paper2.paper2_7.fusion import ECF
 from toolbox.paper2.paper2_7.prototype import GTE
-from toolbox.paper2.paper2_7.decoder0 import FCDL, FCDH
+from toolbox.paper2.paper2_7.FCD import FCDL, FCDH
 
 
 
