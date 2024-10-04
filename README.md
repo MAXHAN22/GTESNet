@@ -1,4 +1,4 @@
-![1728013491796](https://github.com/user-attachments/assets/4e9cfb0d-e998-4026-9212-4a14d1904ce5)# GTESNet
+# GTESNet
 
 This project provides the code and results for 'Remote Sensing Image Scene Classification via Graph Template Enhancement and Supplementation Network with Dual-Teacher Knowledge Distillation'.
 
