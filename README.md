@@ -4,12 +4,17 @@ This project provides the code and results for 'Remote Sensing Image Scene Class
 
 
 # Architecture and Details
-![1728013413299](https://github.com/user-attachments/assets/a62a8177-6004-417d-951e-b57d91e2576e)
-![1728013452522](https://github.com/user-attachments/assets/f676c6c1-af1f-4adc-b444-bf71ce7398ce)
+![1728013572719](https://github.com/user-attachments/assets/2df631e1-e692-462d-ae2f-a403fcb1dc87)
+
+![1728013550255](https://github.com/user-attachments/assets/fbbc870d-9b09-46dc-b4ec-8cbc6699faf0)
+
+
 
 
 # Results
-![1728013491796](https://github.com/user-attachments/assets/d2f24a2b-ecc7-455c-bfc8-8125c2fa3ef2)
+![1728013491796](https://github.com/user-attachments/assets/569c790e-27c6-408b-9ae6-47bdffa311db)
+
+
 
 
 
