@@ -7,12 +7,11 @@ import torchvision
 import torch.nn.functional as F
 import os
 
-"""decoder1 使用 +
-    """
 
-class decoder0(nn.Module):
+
+class FCDL(nn.Module):
     def __init__(self, in_ch, out_ch):
-        super(decoder0, self).__init__()
+        super(FCDL, self).__init__()
         self.up2 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
         self.conv = nn.Sequential(
             nn.Conv2d(in_ch, out_ch, 1),
@@ -121,9 +120,9 @@ class gate(nn.Module):
         return xo
 
 
-class decoder01(nn.Module):
+class FCDH(nn.Module):
     def __init__(self, in_ch, out_ch, p_channel):
-        super(decoder01, self).__init__()
+        super(FCDH, self).__init__()
         self.up2 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
         self.conv = nn.Sequential(
             nn.Conv2d(in_ch, out_ch, 1),
@@ -166,9 +165,3 @@ class decoder01(nn.Module):
         return out
 
 
-if __name__ == '__main__':
-    net = decoder0(320, 160)
-    a = torch.randn([2, 320, 8, 8])
-    b = torch.randn([2, 160, 16, 16])
-    s= net(a, b)
-    print("s.shape:", s.shape)
