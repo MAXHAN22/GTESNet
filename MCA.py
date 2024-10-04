@@ -20,9 +20,9 @@ class MLP(nn.Module):
         return x
 
 
-class weight(nn.Module):
+class MCA(nn.Module):
     def __init__(self, in_dim, out_dim):
-        super(weight, self).__init__()
+        super(MCA, self).__init__()
 
         self.avg = nn.AdaptiveAvgPool2d(1)
 
