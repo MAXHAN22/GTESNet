@@ -5,9 +5,9 @@ from torch.nn import functional as F
 from toolbox.backbone.ResNet import resnet34
 
 
-from toolbox.paper2.paper2_7.fusion import CSIB2_2
-from toolbox.paper2.paper2_7.prototype import prototype2
-from toolbox.paper2.paper2_7.decoder0 import decoder0, decoder01
+from toolbox.paper2.paper2_7.fusion import ECF
+from toolbox.paper2.paper2_7.prototype import GTE
+from toolbox.paper2.paper2_7.decoder0 import FCDL, FCDH
 
 
 """decoder1 use +  ; docoder0 dont transfer to decoder1
@@ -45,38 +45,38 @@ class student(nn.Module):
 
         ###############################################
         # funsion encoders #
-        self.p1_r = prototype2(self.channels[1], p)
-        self.p2_r = prototype2(self.channels[2], p)
-        self.p3_r = prototype2(self.channels[3], p)
-        self.p4_r = prototype2(self.channels[4], p)
-        self.p1_d = prototype2(self.channels[1], p)
-        self.p2_d = prototype2(self.channels[2], p)
-        self.p3_d = prototype2(self.channels[3], p)
-        self.p4_d = prototype2(self.channels[4], p)
+        self.p1_r = GTE(self.channels[1], p)
+        self.p2_r = GTE(self.channels[2], p)
+        self.p3_r = GTE(self.channels[3], p)
+        self.p4_r = GTE(self.channels[4], p)
+        self.p1_d = GTE(self.channels[1], p)
+        self.p2_d = GTE(self.channels[2], p)
+        self.p3_d = GTE(self.channels[3], p)
+        self.p4_d = GTE(self.channels[4], p)
 
-        self.fu_1 = CSIB2_2(self.channels[1])
-
-        
-        self.fu_2 = CSIB2_2(self.channels[2])
+        self.fu_1 = ECF(self.channels[1])
 
         
-        self.fu_3 = CSIB2_2(self.channels[3])
+        self.fu_2 = ECF(self.channels[2])
+
+        
+        self.fu_3 = ECF(self.channels[3])
 
 
-        self.fu_4 = CSIB2_2(self.channels[4])
+        self.fu_4 = ECF(self.channels[4])
 
 
         ###############################################
         # decoders #
         ###############################################
         # enhance receive field #
-        self.decoder03 = decoder0(self.channels[4], self.channels[3])
-        self.decoder02 = decoder0(self.channels[3], self.channels[2])
-        self.decoder01 = decoder0(self.channels[2], self.channels[1])
+        self.decoder03 = FCDL(self.channels[4], self.channels[3])
+        self.decoder02 = FCDL(self.channels[3], self.channels[2])
+        self.decoder01 = FCDL(self.channels[2], self.channels[1])
 
-        self.decoder13 = decoder01(self.channels[4], self.channels[3], self.channels[1])
-        self.decoder12 = decoder01(self.channels[3], self.channels[2], self.channels[1])
-        self.decoder11 = decoder01(self.channels[2], self.channels[1], self.channels[1])
+        self.decoder13 = FCDH(self.channels[4], self.channels[3], self.channels[1])
+        self.decoder12 = FCDH(self.channels[3], self.channels[2], self.channels[1])
+        self.decoder11 = FCDH(self.channels[2], self.channels[1], self.channels[1])
 
         self.conv4 = nn.Sequential(
             nn.Conv2d(self.channels[4], self.channels[4], 1),
